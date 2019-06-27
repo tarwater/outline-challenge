@@ -7,7 +7,7 @@ const fs = require('fs');
 const readline = require('readline');
 
 const args = process.argv.slice(2);
-process.on("exit", code => console.log(`Exiting with code ${code}`));
+// process.on("exit", code => console.log(`Exiting with code ${code}`));
 
 const throwInputError = () => {
     process.exit(2);
@@ -81,5 +81,7 @@ rl.on('line', (line) => { // read file line by line
 
 rl.on('close', () => { // file is done reading
     scores.sort((a, b) => b.score - a.score); // sort results by score
-    console.log(scores.slice(0, displayLength)); // display first n results
+
+    let json = JSON.stringify(scores.slice(0, displayLength));
+    console.log(json);
 });
